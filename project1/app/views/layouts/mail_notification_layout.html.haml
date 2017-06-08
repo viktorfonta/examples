@@ -1,0 +1,14 @@
+!!!
+%html
+  %head
+    %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
+  %body
+    %div
+      %h3 Hi #{@name}!
+      = yield
+      %p
+        Sincerely,
+        %br
+        Your Project 1 Team
+      %hr
+      %p= link_to 'Edit email notifications', "#{root_url}signin?goto=notifications"

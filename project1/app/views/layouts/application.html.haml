@@ -1,0 +1,49 @@
+!!!
+%html
+  %head
+    %title Project 1
+    = stylesheet_link_tag "application", media: "screen"
+    = javascript_include_tag "application", async: !Rails.env.development?
+    = favicon_link_tag '/favicon.ico'
+    = csrf_meta_tags
+    = tag('meta', name: 'viewport', content: "width=device-width, initial-scale=1")
+    = tag('meta', property: 'fb:app_id', content: SHARING_CONFIG[:fb_app_id])
+    = tag('meta', property: 'og:url', content: @og_url)
+    = tag('meta', property: 'og:title', content: prepare_og_text(@og_title))
+    = tag('meta', property: 'og:description', content: prepare_og_text(@og_description[0..150]))
+    = tag('meta', property: 'og:image', content: @og_image)
+
+    = tag('link', rel: 'apple-touch-icon', sizes: '76x76', href: '/apple-touch-icon.png')
+    = tag('link', rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32x32.png')
+    = tag('link', rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon-16x16.png')
+    = tag('link', rel: 'manifest', href: '/manifest.json')
+    = tag('link', rel: 'mask-icon', color: '#5bbad5', href: '/safari-pinned-tab.svg')
+    = tag('meta', name: 'theme-color', content: '#ffffff')
+    - if Rails.env.production?
+      :javascript
+        !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+        n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+        document,'script','https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '11111111');
+        fbq('track', "PageView");
+      %noscript
+        %img{src: "https://www.facebook.com/tr?id=11111&ev=PageView&noscript=1", style: "display:none", height: 1, width: 1}
+
+      :javascript
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-1111111-1', 'auto');
+        ga('send', 'pageview');
+
+  %body.an-global{'ng-app' => 'etcApp', 'ng-class' => 'globalBodyClass'}
+    = render partial: 'shared/tag_manager' if Rails.env.production?
+    = yield
+  :javascript
+    var perPage = #{PER_PAGE};
+    var gReviewPointArray = #{REVIEW_POINT_ARRAY};
+    var limitRecord = 2;

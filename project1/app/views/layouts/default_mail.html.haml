@@ -1,0 +1,12 @@
+!!!
+%html
+  %head
+    %title eTutorCloud
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
+  %body
+    = yield
+
+    %p{style: "border-top: 1px #CCCCCC solid; color: #999999; padding-top: 5px;"}
+      = raw(t("letters.footer.settings.text",
+                settings_link: link_to(t("letters.footer.settings.email_settings"), mail_link_url(email_settings_slug(@recipient), auth_token: @recipient.authentication_token, scrollTo: :emailnotifications), target: "_blank", style: "color: #666666;"),
+                user_home_page_link: link_to(t("letters.footer.settings.profile"), mail_link_url("home#{@recipient.role}", auth_token: @recipient.authentication_token), target: "_blank", style: "color: #666666;")))

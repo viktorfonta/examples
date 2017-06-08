@@ -1,0 +1,34 @@
+en:
+  users:
+    welcome_notification: "Welcome to Project 1! Thank you for joining."
+    errors:
+      user_not_found: User not found.
+    index:
+      header: Users Management
+      labels:
+        username: User Name
+        email: Email
+        full_name: Full Name
+        status: Status
+        pen_tablet: Pen & Tablet Certified
+        add_user: Add User
+        signup_time: Sign up date
+        confirm: Confirm
+      no_data: No users dislay
+    delete:
+      title: Delete User Confirmation
+      confirmation: Are you sure want to remove this user ?
+    payment_form:
+      title: Make Payment
+    refund_form:
+      title: Make Refund
+    messages:
+      created_successfully: User %{name} have been created.
+      updated_successfully: User %{name} have been updated.
+      remove_successfully: User %{name} have been removed.
+      repair_successfully: User %{name} have been repaired.
+      enabled_successfully: User %{name} have been enabled.
+      disabled_successfully: User %{name} have been disabled.
+      togglePenTabletStatus_successfully: User %{name} Pen & Tablet Status have been updated successfully.
+      confirmed_successfully: User %{name} have been confirmed.
+      confirm_user: Set this user to be confirmed
